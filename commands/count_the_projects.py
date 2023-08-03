@@ -1,13 +1,7 @@
-import os
-import urllib3
-import json
 import datetime 
 import dateutil.parser
-
-http = urllib3.PoolManager()
-def call_api(url):
-    r = http.request( 'GET', url, headers={ 'Content-Type': 'application/json', 'X-Auth-Token': os.environ['GLASS_FLOG_TOKEN'] })
-    return json.loads(r.data.decode('utf-8'))
+import components.urls as url
+import components.frog as api
 
 def print_circle(circle):
     if len(circle['links']['roles']) > 0: 
@@ -18,19 +12,16 @@ def print_project(count, project):
     print('*', count, '[projects]',' <----- ' + project['description'], '[(' + project['status'] +'),' + project['created_at'] + ']')
 
 
-URL_API = 'https://api.glassfrog.com/api/v3/'
-URL_CIRCLES = URL_API + 'circles'
-URL_PROJECTS = URL_CIRCLES + '/{circle_id}/projects'
 count = 0
 currents = []
 dones = []
 waitings = []
 futures = []
 
-circles = call_api(URL_CIRCLES)['circles']
+circles = api.call(url.circles())['circles']
 for circle in circles:
     print_circle(circle)
-    projects = call_api(URL_PROJECTS.format(circle_id = circle['id']))['projects']
+    projects = api.call(url.projects().format(circle_id = circle['id']))['projects']
     for project in projects:
         count += 1
         print_project(count, project)
