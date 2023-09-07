@@ -17,13 +17,10 @@ def print_circle(circle):
 def print_project(count, project):
     print('*', count, '[projects]',' <----- ' + project['description'], '[(' + project['status'] +'),' + project['created_at'] + ']')
 
-def print_oldest_projects(currents):
-    currents = sorted(currents, key=lambda d:d['created_at'])
-    rank_count = 1
-    for project in currents[:5]:
+def print_oldest_projects(projects):
+    projects = sorted(projects, key=lambda d:d['created_at'])
+    count = 1
+    for project in projects[:5]:
         timestamp = dateutil.parser.parse(project['created_at'])
-        print(rank_count, '[', timestamp.strftime("%Y/%m/%d"), ']', project['description'])
-        rank_count += 1
-
-
-
+        print(count, '[', timestamp.strftime("%Y/%m/%d"), ']', project['description'])
+        count += 1

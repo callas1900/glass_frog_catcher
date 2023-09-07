@@ -8,7 +8,7 @@ currents = []
 circles = api.call(url.circles())['circles']
 for circle in circles:
     api.print_circle(circle)
-    projects = api.call(url.projects().format(circle_id = circle['id']))['projects']
+    projects = api.call(url.projects_circles().format(circle_id = circle['id']))['projects']
     for project in projects:
         count += 1
         api.print_project(count, project)
@@ -18,4 +18,3 @@ for circle in circles:
             status_count[project['status']] = 1
 
 print(status_count)
-#api.print_oldest_projects(currents)
