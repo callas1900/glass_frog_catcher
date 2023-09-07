@@ -11,7 +11,7 @@ Glass Frog is a holacracy support tool. This tool bagan with motivation just for
 python --version
 3.10.11
 ```
-### one shot usage
+### One shot usage
 
 1. set your API token
 
@@ -19,7 +19,7 @@ python --version
 export GLASS_FLOG_TOKEN={your api token}
 ```
 
-### normal usage (recommend)
+### Normal usage (recommend)
 
 1. install [direnv](https://github.com/direnv/direnv) 
 
@@ -28,6 +28,6 @@ export GLASS_FLOG_TOKEN={your api token}
 cp .envrc_sample .envrc
 ```
 
-3. edit .envrc with your api token
+3. edit .envrc with your api token from .envrc_sample
 
 
