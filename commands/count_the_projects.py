@@ -16,5 +16,12 @@ for circle in circles:
             status_count[project['status']] += 1
         else:
             status_count[project['status']] = 1
-
-print(status_count)
+print()
+print('='*20)
+print('In total ' + str(count) + ' projects!')
+for k in status_count:
+    indent = ' '*3
+    count = status_count[k]
+    if count < 10:
+        indent = ' '*4
+    print(indent, count, '(' + k + ')')

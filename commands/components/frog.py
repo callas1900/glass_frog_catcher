@@ -15,7 +15,7 @@ def print_circle(circle):
         print('[', circle['name'], '](', circle['id'], ')')
 
 def print_project(count, project):
-    print('*', count, '[projects]',' <----- ' + project['description'], '[(' + project['status'] +'),' + project['created_at'] + ']')
+    print('*', count, '[projects]','<<<< ' + project['description'], '[(' + project['status'] +'),' + project['created_at'] + ']')
 
 def print_oldest_projects(projects):
     projects = sorted(projects, key=lambda d:d['created_at'])
